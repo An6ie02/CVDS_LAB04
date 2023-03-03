@@ -2,6 +2,8 @@ package hangman.model;
 
 public class BonusScore implements GameScore {
     
+    private int score = 0;
+
     /** Calcula el puntaje de acuerdo a las letras correctas e incorrectas.
      * 
      * @pre Se inicia con 0 puntos.
@@ -12,7 +14,9 @@ public class BonusScore implements GameScore {
      * y penalizacion de 5 puntos por cada letra incorrecta.
      */
     public int calculateScore(int correctCount, int incorrectCount) {
-        return correctCount > 2*incorrectCount? 10 : 0;
+        score += correctCount*10;
+        score -= incorrectCount*5;
+        return score <= 0 ? 0 : score;
     }
 
 }

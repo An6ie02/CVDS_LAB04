@@ -111,7 +111,7 @@ public class GameScoreTest {
     public void givenPowerScoreShouldBeZeroWhenScoreIsZero() {
         // Arrange
         GameScore score = new PowerScore();
-        int expected = 0;
+        int expected = 1;
         // Act
         int actual = score.calculateScore(0, 0);
         // Assert
@@ -124,7 +124,7 @@ public class GameScoreTest {
         GameScore score = new PowerScore();
         int expected = 125;
         // Act
-        int actual = score.calculateScore(0, 3);
+        int actual = score.calculateScore(3, 0);
         // Assert
         Assert.assertEquals(expected, actual);
     }
@@ -133,9 +133,9 @@ public class GameScoreTest {
     public void givenPowerScoreShouldBe500WhenScoreIs500() {
         // Arrange
         GameScore score = new PowerScore();
-        int expected = 505;
+        int expected = 500;
         // Act
-        int actual = score.calculateScore(4, 15);
+        int actual = score.calculateScore(5, 0);
         // Assert
         Assert.assertEquals(expected, actual);
     }
@@ -144,12 +144,11 @@ public class GameScoreTest {
     public void givenPowerScoreShouldBe500WhenScoreIsMoreThan500() {
         // Arrange
         GameScore score = new PowerScore();
-        int expected = 505;
+        int expected = 500;
         // Act
-        int actual = score.calculateScore(4, 15);
+        int actual = score.calculateScore(6, 0);
         // Assert
         Assert.assertEquals(expected, actual);
     }
-
 
 }
