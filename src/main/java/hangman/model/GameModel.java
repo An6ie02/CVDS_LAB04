@@ -17,6 +17,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import com.google.inject.Inject;
+
 
 public class GameModel {
     private int incorrectCount;
@@ -25,23 +27,25 @@ public class GameModel {
     private int gameScore;
     private int[] lettersUsed;
     
-    
     private HangmanDictionary dictionary;
     
     private Scanner scan;
     private String randomWord;
     private char[] randomWordCharArray;
     
-    
+    @Inject
+    private GameScore gameS;
+
    
-    public GameModel(HangmanDictionary dictionary){
+    public GameModel(HangmanDictionary dictionary, GameScore gameS){
         //this.dictionary = new EnglishDictionaryDataSource();
         this.dictionary=dictionary;
+        this.gameS = gameS;
         randomWord = selectRandomWord();
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;
         correctCount = 0;
-        gameScore = 100;
+        gameScore = gameS.initialScore();
         
     }
     
@@ -52,7 +56,7 @@ public class GameModel {
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;
         correctCount = 0;
-        gameScore = 100;
+        gameScore = gameS.initialScore();
     }
 
     //setDateTime
@@ -74,10 +78,10 @@ public class GameModel {
         }
         if(positions.size() == 0){
             incorrectCount++;
-            gameScore -= 10;
         } else {
             correctCount += positions.size();
         }
+        gameScore = gameS.calculateScore(correctCount, incorrectCount);
         return positions;
         
     }

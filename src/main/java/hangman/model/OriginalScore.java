@@ -17,4 +17,9 @@ public class OriginalScore implements GameScore {
         return score <= 0 ? 0 : score;
     }
 
+    public int initialScore() {
+        score = 100;
+        return score;
+    }
+
 }

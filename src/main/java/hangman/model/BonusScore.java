@@ -19,4 +19,9 @@ public class BonusScore implements GameScore {
         return score <= 0 ? 0 : score;
     }
 
+    public int initialScore() {
+        score = 0;
+        return score;
+    }
+
 }
