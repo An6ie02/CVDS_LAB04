@@ -51,7 +51,17 @@
    Se añaden las dependencias JUnit y la version del compilador 8.
 
    ```xml
-   
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <maven.compiler.source>1.8</maven.compiler.source>
+      <maven.compiler.target>1.8</maven.compiler.target>
+   </properties>
+   <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+   </dependency>   
    ```
 
 6. Teniendo en cuenta dichas especificaciones, en la clase donde se implementarán las pruebas (GameScoreTest), en los comentarios iniciales, especifique las clases de equivalencia para las tres variantes de GameScore, e identifique condiciones de frontera.
@@ -60,7 +70,7 @@
 
 7. Para cada clase de equivalencia y condición de frontera, implemente una prueba utilizando JUnit.
 
-    Se crean los primeros test con las clases de equivalencia en `model/GameScoreTest.java`.
+    Se crean los primeros test con las clases de equivalencia en `src/test/java/hangman/model/GameScoreTest.java`.
 
 8. Haga commit de lo realizado hasta ahora. Desde la terminal:
 
