@@ -11,7 +11,7 @@ public class OriginalScore implements GameScore {
      * @return Puntaje con penalizacion de 10 puntos por cada letra incorrecta.
      */
     public int calculateScore(int correctCount, int incorrectCount) {
-        return 0;
+        return correctCount == 0 && incorrectCount == 0 ? 100 : 0;
     }
 
 }

@@ -12,7 +12,7 @@ public class BonusScore implements GameScore {
      * y penalizacion de 5 puntos por cada letra incorrecta.
      */
     public int calculateScore(int correctCount, int incorrectCount) {
-        return 0;
+        return correctCount > 2*incorrectCount? 10 : 0;
     }
 
 }
