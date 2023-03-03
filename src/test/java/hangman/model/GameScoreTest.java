@@ -135,7 +135,7 @@ public class GameScoreTest {
         GameScore score = new PowerScore();
         int expected = 500;
         // Act
-        int actual = score.calculateScore(5, 0);
+        int actual = score.calculateScore(4, 15);
         // Assert
         Assert.assertEquals(expected, actual);
     }

@@ -14,8 +14,8 @@ public class PowerScore implements GameScore {
      * y penalizacion de 8 puntos por cada letra incorrecta.
      */
     public int calculateScore(int correctCount, int incorrectCount) {
-        score = Math.pow(5, correctCount) >= 500 ? 500 : (int) Math.pow(5, correctCount);
-        score -= incorrectCount*8; 
+        score = Math.pow(5, correctCount) - incorrectCount*8 >= 500 
+        ? 500 : (int) Math.pow(5, correctCount) - incorrectCount*8;
         return score <= 0 ? 0 : score ;
     }
 
