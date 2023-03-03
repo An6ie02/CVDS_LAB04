@@ -115,16 +115,47 @@ Incorpore el Contenedor Liviano Guice dentro del proyecto:
   Se asoscian nuevas dependencias en el `pom.xml`
 
   ```xml
-  
+  <dependency>
+      <groupId>com.google.inject</groupId>
+      <artifactId>guice</artifactId>
+      <version>4.0</version>
+   </dependency>
   ```
 
 * Modifique la inyección de dependencias utilizando guice en lugar del método fábrica.
 
-  Modificando la inyección de dependencias para utilizar guice en HangmanFactory.
+  Modificando la inyección de dependencias para utilizar guice en lugar del método fábrica.
+
+  ```java
+   public static void main(String[] args) {
+      createGUIUsingGuice().play();
+   }
+  ```
 
 * Configure la aplicación de manera que desde el programa SwingProject NO SE CONSTRUYA el Score directamente, sino a través de Guice asi mismo como las otras dependencias que se están inyectando mediante la fabrica.
 
-  Realizando inyección de dependencias en el proyecto.
+  Realizando inyección de dependencias en el proyecto en:
+  `src/main/java/hangman/setup/guice/HangmanFactoryServices.java`
+
+  ```java
+  @Override
+   protected void configure() {
+      bind(Language.class).to(English.class);
+      bind(GameScore.class).to(OriginalScore.class);
+      bind(HangmanDictionary.class).to(EnglishDictionaryDataSource.class);
+      bind(HangmanPanel.class).to(HangmanStickmanPanel.class);
+   }
+  ```
+
+  ![image1.png](./img/image1.png)
+
+  Añadiendo comportamiento en:
+  `src/main/java/hangman/model/GameModel.java`
+
+  ```java
+  @Inject
+  private GameScore gameS;
+  ```
 
 * Mediante la configuración de la Inyección de
   Dependencias se pueda cambiar el comportamiento del mismo, por
@@ -133,6 +164,22 @@ Incorpore el Contenedor Liviano Guice dentro del proyecto:
   * Utilizar el esquema BonusScore.
   * Utilizar el idioma francés.
   * Utilizar el diccionario francés.
+
+  Usando idioma francés y diccionario francés con el esquema BonusScore.
+
+  ```java
+   @Override
+   protected void configure() {
+      bind(Language.class).to(French.class);
+      bind(GameScore.class).to(BonusScore.class);
+      bind(HangmanDictionary.class).to(FrenchDictionaryDataSource.class);
+      bind(HangmanPanel.class).to(HangmanStickmanPanel.class);
+   }
+  ```
+
+  Aplicación:
+
+  ![image2.png](./img/image2.png)
 
 ### Referencias
 
