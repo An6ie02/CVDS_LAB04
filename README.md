@@ -104,7 +104,9 @@ En este taller se va a utilizar un contenedor liviano ([GoogleGuice](https://git
 
 1. Utilizando el HangmanFactoryMethod (MétodoFabrica) incluya el OriginalScore a la configuración.
 
-   Se añade OiginalScore a la configuracion de HangmanFactory
+   Se añade OiginalScore a la configuracion de HangmanFactory, se realiza en:\
+   `src/main/java/hangman/setup/factoryMethod/HangmanDefaultFactoryMethod.java`
+   `src/main/java/hangman/setup/factoryMethod/HangmanFactoryMethod.java`
 
 Incorpore el Contenedor Liviano Guice dentro del proyecto:
 
