@@ -17,7 +17,7 @@ import org.junit.Test;
  * 2. Numeros positivos no tienen cambio.
  */
 
-/** Clases de equivalencia para PowerScore
+/** Clases de equivalencia para PowerScore.
  * 
  * 1. Numeros negativos con frontera en 0, cualquier numero
  * en este rango equivale a 0.
