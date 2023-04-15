@@ -3,10 +3,10 @@ run-name: ${{ github.actor }} is testing game HangMan 🚀
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main 
+      - master 
 
 jobs:
   build:
